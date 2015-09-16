@@ -16,18 +16,54 @@ namespace Demo_1
         ********************************************/
         static void Main(string[] args)
         {
+            uint val = 0; //Value I am generating Prime factors for.
             //Confirm I have one argument (exactly)
-            //Confirm that it is a positive integer
-            //Generate factors (if possible)
+          
             if(args.Count()!=1)
             {
                 //print error and exit
                 PrintError("Invalid number of arguments (" + args.Count() + ")", "", true, true, -1);
             }
 
-            //DEBUG!!!
-            Console.ReadKey();
+            //Confirm that it is a positive integer
+
+            try
+            {
+                val = uint.Parse(args[0]);
+            }
+            catch(Exception e)
+            {
+                PrintError("Parsing Error on argumen \"" + args[0] + "\"", e.Message, true, true, -2);
+            }
+            if (val < 1)
+            {
+                PrintError("Zero is not a permitted input argument", "", true, true, -3);
+            }
+
+            //Generate factors (if possible)
+
+            //If i got here, I got a positive integer, currently stored in val
+
+            factor(val);
+
+         
         }
+
+        static void factor(uint val)//Prints out factors
+        {
+            if (val == 1) return;
+            for (int i = 2; i <= val/2; i++) //potential factors
+            {
+                //Is i a factor?
+                if (val % i == 0) //found one!
+                {
+                    Console.Write(i + " ");
+                }
+            }
+            Console.WriteLine();
+
+        }
+
 
         static void PrintError(string Err = "Error", string Dbg = "",
                                     bool printUsage = true, bool exit = false, int exitVal = 1)
@@ -50,8 +86,7 @@ namespace Demo_1
             }
             Console.ForegroundColor = currForeColour;
             Console.BackgroundColor = currBackColour;
-            //DEBUG!!!
-            Console.ReadKey();
+            
             if (exit)
             {
                 Environment.Exit(exitVal); //By convention, exit with a value != 0 for error
