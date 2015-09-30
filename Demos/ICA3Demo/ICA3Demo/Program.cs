@@ -30,7 +30,7 @@ namespace ICA3Demo
                 Utils.PrintError("Parsing Error on argumen \"" + args[0] + "\"", e.Message, true, true, -2);
             }
 
-            Console.WriteLine(CountSetBit(val));
+            Console.WriteLine((CountSetBit(val) %2 == 1) ? "Odd":"Even");
         }
 
         static bool setP (ulong val, byte bit)
