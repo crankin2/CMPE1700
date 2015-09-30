@@ -11,7 +11,7 @@ namespace Demo_1
         /********************************************
         *
         * Accepts one argument which must be a positive integer > 0
-        * Outputsspace delimited list of prime factors of arg 1
+        * Outputs space delimited list of prime factors of arg 1
         *
         ********************************************/
         static void Main(string[] args)
